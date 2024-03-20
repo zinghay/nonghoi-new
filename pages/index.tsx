@@ -49,14 +49,14 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{host.split('.')[0]}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Blog</title>
+        <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
 
       <header className={styles.header}>
         <Link href="/">
           <a>
-            <img src="/logo.png" alt="Home" className={styles.logo} />
+            <img src="" alt="Home" className={styles.logo} />
           </a>
         </Link>
       </header>
