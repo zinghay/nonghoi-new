@@ -49,7 +49,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>My Blog</title>
+        <title>{host.split('.')[0]}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
