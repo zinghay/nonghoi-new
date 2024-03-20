@@ -99,10 +99,6 @@ const Post: React.FC<PostProps> = (props) => {
 				
   <title>{post.title}</title>
 </Head>
-			      <header className={styles.header}>
-        <Link href="/" alt="Home" className={styles.logo} />
-        </Link>
-      </header>
 
 			<div className="post-container">
 				<h1>{post.title}</h1>
