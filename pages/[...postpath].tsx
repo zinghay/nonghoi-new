@@ -86,7 +86,8 @@ const Post: React.FC<PostProps> = (props) => {
   {/* <meta property="og:title" content={post.title} />
     
    */}
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
   <meta property="og:url" content={post.featuredImage.node.sourceUrl} />
   <meta property="og:description" content="ㅤ" />
   <meta property="og:type" content="article" />
