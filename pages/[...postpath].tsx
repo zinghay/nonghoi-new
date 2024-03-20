@@ -87,8 +87,8 @@ const Post: React.FC<PostProps> = (props) => {
     
    */}
 <meta charSet="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
-<meta name="og:url" content={post.featuredImage.node.sourceUrl} />
+<meta property="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
+<meta property="og:url" content={post.featuredImage.node.sourceUrl} />
 <meta property="og:description" content="ㅤ" />
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="en_US" />
@@ -96,8 +96,14 @@ const Post: React.FC<PostProps> = (props) => {
   <meta property="article:published_time" content={post.dateGmt} />
   <meta property="article:modified_time" content={post.modifiedGmt} />
   <meta property="og:image" content={post.featuredImage.node.sourceUrl} />
+				
   <title>{post.title}</title>
 </Head>
+			      <header className={styles.header}>
+        <Link href="/" alt="Home" className={styles.logo} />
+        </Link>
+      </header>
+
 			<div className="post-container">
 				<h1>{post.title}</h1>
 				<img
