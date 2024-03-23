@@ -84,7 +84,7 @@ const Post: React.FC<PostProps> = (props) => {
 			<Head>
   {/* Ẩn tiêu đề và tóm tắp */}
 
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="{host.split('.')[0]}" />
 
   <meta property="og:description" content="" />
 
