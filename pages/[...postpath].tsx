@@ -82,21 +82,35 @@ const Post: React.FC<PostProps> = (props) => {
 	return (
 		<>
 			<Head>
-  {/* Ẩn tiêu đề và tóm tắt */}
-  {/* <meta property="og:title" content={post.title} />
-    
-   */}
-<meta charSet="UTF-8" />
-<meta property="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
-<meta property="og:url" content={post.featuredImage.node.sourceUrl} />
-<meta property="og:description" content="ㅤ" />
+  {/* Ẩn tiêu đề và tóm tắp */}
+
+  <meta property="og:title" content="" />
+
+  <meta property="og:description" content="" />
+
+  <meta property="og:url" content={post.featuredImage.node.sourceUrl} />
+
   <meta property="og:type" content="article" />
+
   <meta property="og:locale" content="en_US" />
+
   <meta property="og:site_name" content={host.split('.')[0]} />
-  <meta property="article:published_time" content={post.dateGmt} />
-  <meta property="article:modified_time" content={post.modifiedGmt} />
-  <meta property="og:image" content={post.featuredImage.node.sourceUrl} />
-				
+
+  <meta 
+    property="article:published_time" 
+    content={post.dateGmt} 
+  />
+
+  <meta
+    property="article:modified_time"
+    content={post.modifiedGmt}
+  />
+
+  <meta 
+    property="og:image"
+    content={post.featuredImage.node.sourceUrl} 
+  />
+
   <title>{post.title}</title>
 </Head>
 
