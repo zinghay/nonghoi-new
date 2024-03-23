@@ -86,7 +86,7 @@ const Post: React.FC<PostProps> = (props) => {
 
   <meta property="og:title" content="ㅤ" />
 
-  <meta property="og:description" content=" " />
+  <meta property="og:description" content="ㅤ" />
 
   <meta property="og:url" content={post.featuredImage.node.sourceUrl} />
 
