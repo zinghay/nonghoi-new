@@ -84,9 +84,9 @@ const Post: React.FC<PostProps> = (props) => {
 			<Head>
   {/* Ẩn tiêu đề và tóm tắp */}
 
-  <meta property="og:title" content="{host.split('.')[0]}" />
+  <meta property="og:title" content="ㅤ" />
 
-  <meta property="og:description" content="" />
+  <meta property="og:description" content="ㅤ" />
 
   <meta property="og:url" content={post.featuredImage.node.sourceUrl} />
 
