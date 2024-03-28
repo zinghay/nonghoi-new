@@ -118,7 +118,7 @@ const Post: React.FC<PostProps> = (props) => {
     property="og:image"
     content={post.featuredImage.node.sourceUrl} 
   />
-<Link href="/" className={styles.header} title="Blog">
+<Link href="/" title="Blog">
       <a>Blog</a>
     </Link>
   <title>{post.title}</title>
