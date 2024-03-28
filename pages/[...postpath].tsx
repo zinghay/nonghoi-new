@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
@@ -118,9 +117,6 @@ const Post: React.FC<PostProps> = (props) => {
     property="og:image"
     content={post.featuredImage.node.sourceUrl} 
   />
-<Link href="/" title="Blog">
-      <a>Blog</a>
-    </Link>
   <title>{post.title}</title>
 </Head>
     
