@@ -83,7 +83,7 @@ const Post: React.FC<PostProps> = (props) => {
 		<>
 
 			<Head>
-  {/* Ẩn tiêu đề và tóm tắp */}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 
   <meta property="og:title" content="ㅤ" />
 
