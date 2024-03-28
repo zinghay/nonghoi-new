@@ -79,13 +79,15 @@ const Post: React.FC<PostProps> = (props) => {
 		return str.replace(/(<([^>]+)>)/gi, '').replace(/\[[^\]]*\]/, '');
 	};
 
+
+
 	return (
 		<>
 
 			<Head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="robots" content="max-image-preview:large" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
 
   <meta property="og:title" content="ㅤ" />
 
