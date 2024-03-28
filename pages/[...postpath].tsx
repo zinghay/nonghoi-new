@@ -82,45 +82,6 @@ const Post: React.FC<PostProps> = (props) => {
 		return str.replace(/(<([^>]+)>)/gi, '').replace(/\[[^\]]*\]/, '');
 	};
 
-
-const Post: React.FC<PostProps> = ({post, relatedPosts}) => {
-
-  // Render bài viết 
-  const renderPost = () => {
-    // existing code to render post
-  }
-
-  // Render related posts
-  const renderRelatedPosts = () => {
-    return (
-      <div>
-        <h3>Related Posts</h3>
-
-        {relatedPosts.map(relatedPost => (
-          <div key={relatedPost.id}>
-            <Image src={relatedPost.featuredImage.url} />
-            <h4>{relatedPost.title}</h4>  
-            <p>{relatedPost.excerpt}</p>
-
-            <Link href={`/posts/${relatedPost.id}`}>
-              <a>Read more</a>
-            </Link>
-          </div>
-        ))}
-      </div>
-    )
-  }
-
-  return (
-    <>
-      {renderPost()}
-
-      {relatedPosts.length > 0 && renderRelatedPosts()}
-    </>
-  )
-
-}
-
 	
 
 	return (
