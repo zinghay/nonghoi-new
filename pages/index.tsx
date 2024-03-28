@@ -29,7 +29,34 @@ interface HomeProps {
   posts: Post[];
 }
 
+
 const Home: NextPage<HomeProps> = ({ posts }) => {
+
+   return (
+    <div>
+
+      <Head>
+
+        <title>Blog News</title>
+
+        <meta name="description" content=" "/>
+
+        <meta property="og:title" content=" "/>
+
+        <meta property="og:description" content=" "/>
+
+        <meta property="og:type" content="website"/>
+
+        <meta property="og:url" content="https://nonghoi24h.com/wp-content/uploads/2024/03/FotoJet-49.jpg" />
+
+        <meta property="og:image" content="https://nonghoi24h.com/wp-content/uploads/2024/03/FotoJet-49.jpg"/>
+
+      </Head>
+
+      // content
+    </div>
+  )
+  
   const router = useRouter();
   const { page } = router.query;
 
