@@ -83,13 +83,15 @@ const Post: React.FC<PostProps> = (props) => {
 		<>
 
 			<Head>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+  <meta charset="UTF-8">
+  <meta name="robots" content="max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 
   <meta property="og:title" content="ㅤ" />
 
   <meta property="og:description" content="ㅤ" />
 				
-  <meta property="og:url" content= {post.featuredImage.node.sourceUrl}  />
+  <meta property="og:url" content= "{post.featuredImage.node.sourceUrl}" />
 
   <meta property="og:type" content="article" />
 
