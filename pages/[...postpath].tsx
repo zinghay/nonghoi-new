@@ -85,7 +85,7 @@ const Post: React.FC<PostProps> = (props) => {
 		<>
 
 			<Head>
-  <meta charset="UTF-8" />
+<meta charSet="UTF-8" />
   <meta name="robots" content="max-image-preview:large" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
 
