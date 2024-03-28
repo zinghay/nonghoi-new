@@ -50,17 +50,15 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
 
-      <header className={styles.header}>
-        <Link href="/">
-          <a>
-            <img src="" alt="Home" className={styles.logo} />
-          </a>
-        </Link>
-      </header>
+  <header className={styles.header}>
+    <Link href="/" title="Blog">
+      <a>Blog</a>
+    </Link>
+  </header>
+
 
       <main className={styles.main}>
         
