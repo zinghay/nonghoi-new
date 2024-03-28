@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
@@ -25,6 +26,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	}
 	const query = gql`
 		{
+  
 			post(id: "/${path}/", idType: URI) {
 				id
 				excerpt
@@ -69,6 +71,7 @@ interface PostProps {
 	path: string;
 }
 
+
 const Post: React.FC<PostProps> = (props) => {
 	const { post, host, path } = props;
 
@@ -80,6 +83,45 @@ const Post: React.FC<PostProps> = (props) => {
 	};
 
 
+const Post: React.FC<PostProps> = ({post, relatedPosts}) => {
+
+  // Render bài viết 
+  const renderPost = () => {
+    // existing code to render post
+  }
+
+  // Render related posts
+  const renderRelatedPosts = () => {
+    return (
+      <div>
+        <h3>Related Posts</h3>
+
+        {relatedPosts.map(relatedPost => (
+          <div key={relatedPost.id}>
+            <Image src={relatedPost.featuredImage.url} />
+            <h4>{relatedPost.title}</h4>  
+            <p>{relatedPost.excerpt}</p>
+
+            <Link href={`/posts/${relatedPost.id}`}>
+              <a>Read more</a>
+            </Link>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  return (
+    <>
+      {renderPost()}
+
+      {relatedPosts.length > 0 && renderRelatedPosts()}
+    </>
+  )
+
+}
+
+	
 
 	return (
 		<>
