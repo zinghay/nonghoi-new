@@ -131,6 +131,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
     </ul>
 </div>
 
+
       </main>
        <footer className={styles.footer}>
                 <a href="/" target="_blank" rel="noopener noreferrer" >
