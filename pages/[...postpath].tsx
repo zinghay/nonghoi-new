@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
+import styles from '../styles/Home.module.css';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const endpoint = process.env.GRAPHQL_ENDPOINT as string;
@@ -107,23 +108,29 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:height" content="338" />
             </Head>
 
-            <div className="container main">
-                <div className="post-container">
-                    <h1>{post.title}</h1>
-                    <img src={post.featuredImage?.node.sourceUrl} alt={post.featuredImage?.node.altText || post.title} />
+
+                        <Head>
+                <title>{post.title}</title>
+                <meta name="description" content={post.excerpt} />
+            </Head>
+
+            <main className={styles.main}>
+                <div className={styles.postGrid}>
+                    <h3 className={styles.postTitle}>{post.title}</h3>
+                    <img src={post.featuredImage?.node.sourceUrl} alt={post.featuredImage?.node.altText || post.title} className={styles.postImage} />
                     <article dangerouslySetInnerHTML={{ __html: post.content }} />
                 </div>
 
                 <div className="related-posts">
                     <h2>Bài viết liên quan</h2>
                     <div className="row">
-                        {post.categories?.nodes.map((category: any) => (
-                            category.posts?.nodes.map((relatedPost: any) => (
-                                <div className="column" key={relatedPost.id}>
+                        {post.categories?.nodes.map((category, index) => (
+                            category.posts?.nodes.map((relatedPost, index) => (
+                                <div className="col-md-4" key={relatedPost.id}>
                                     <div className="item card">
                                         <a href={relatedPost.link} className="card-link">
-                                            <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className="postImage" />
-                                            <p className="postTitle">{relatedPost.title}</p>
+                                            <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.postImage} />
+                                            <p className={styles.postTitle}>{relatedPost.title}</p>
                                         </a>
                                     </div>
                                 </div>
@@ -131,7 +138,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </main>
+
 
             <footer className="footer">
                 <a
