@@ -172,3 +172,44 @@
   aspect-ratio: 4 / 3; /* Tỷ lệ khung hình 4:3 */
 }
 
+.pagination_rounded, .pagination_square {
+    display: inline-block;
+    margin-left: 400px;
+    margin-top: 300px;
+}
+
+.pagination_rounded ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pagination_rounded li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.pagination_rounded ul li a:hover {
+    background: #4285f4;
+    color: #fff;
+    border: 1px solid #4285f4;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.pagination_rounded .prev {
+    border-radius: 35px;
+    width: 90px;
+    height: 34px;
+    line-height: 34px;
+}
+
+.pagination_rounded .next {
+    border-radius: 35px;
+    width: 90px;
+    height: 34px;
+    line-height: 34px;
+}
+
