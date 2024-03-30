@@ -173,9 +173,9 @@
 }
 
 .pagination_rounded, .pagination_square {
-    display: inline-block;
-    margin-left: 400px;
-    margin-top: 300px;
+    display: block;
+    margin: 30px auto 0;
+    font-size: x-large;
 }
 
 .pagination_rounded ul {
