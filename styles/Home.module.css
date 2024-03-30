@@ -195,7 +195,7 @@
     border: 1px solid #4285f4;
 }
 
-a:link {
+a.link {
     text-decoration: none;
 }
 
