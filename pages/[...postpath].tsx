@@ -120,21 +120,27 @@ const Post: React.FC<PostProps> = ({ post }) => {
             </div>
 
 
-            <div className="related-posts">
+    
+
+<main className={styles.main}>
     <h2>Related Posts</h2>
-    <div className="row">
-        {post.categories?.nodes.map((category: any) => (
-            category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
-                <div className="col-4" key={relatedPost.id}>
-                    <a href={relatedPost.link} className="card-link">
-                        <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className="post-image" />
-                        <p className="post-title">{relatedPost.title}</p>
-                    </a>
-                </div>
-            ))
-        ))}
+    <div className={styles.grid}>
+        <div className="row">
+            {post.categories?.nodes.map((category: any) => (
+                category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
+                    <div className="col-4" key={relatedPost.id}>
+                        <a href={relatedPost.link} className={styles.cardLink}>
+                            <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.card} />
+                            <p className={styles.postTitle}>{relatedPost.title}</p>
+                        </a>
+                    </div>
+                ))
+            ))}
+        </div>
     </div>
-</div>
+</main>
+
+
 
 
             <footer className={styles.footer}>
