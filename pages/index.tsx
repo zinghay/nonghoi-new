@@ -96,11 +96,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         </div>
       </main>
     </div>
-      <footer className={styles.footer}>
-                <a href="/" target="_blank" rel="noopener noreferrer" className={styles.title}>
-                    Powered by Park Ji Sung
-                </a>
-            </footer>
+
   );
 };
 
