@@ -171,16 +171,38 @@
   height: auto;
   aspect-ratio: 4 / 3; /* Tỷ lệ khung hình 4:3 */
 }
-.related-posts {
-  display: flex;
-  flex-wrap: wrap;
+
+/* Định dạng cho cột */
+.col-4 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
-.col-20 {
-    flex: 0 0 20%;
-    max-width: 20%;
+/* Định dạng cho hình ảnh bài viết */
+.post-image {
+    width: 100%;
+    height: auto;
 }
-.col-40 {
-    flex: 0 0 40%;
-    max-width: 40%;
+
+/* Định dạng cho tiêu đề bài viết */
+.post-title {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* Xếp cột vào hàng */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+/* Clearfix */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
