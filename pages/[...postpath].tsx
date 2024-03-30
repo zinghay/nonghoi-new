@@ -119,21 +119,23 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
 
+
             <div className="related-posts">
-                <h2>Related Posts</h2>
-                <div className="row">
-                    {post.categories?.nodes.map((category: any) => (
-                        category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
-                            <div className="col col-40" key={relatedPost.id}>
-                                <a href={relatedPost.link} className="card-link">
-                                    <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.postImage} />
-                                    <p className={styles.postTitle}>{relatedPost.title}</p>
-                                </a>
-                            </div>
-                        ))
-                    ))}
+    <h2>Related Posts</h2>
+    <div className="row">
+        {post.categories?.nodes.map((category: any) => (
+            category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
+                <div className="col-4" key={relatedPost.id}>
+                    <a href={relatedPost.link} className="card-link">
+                        <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className="post-image" />
+                        <p className="post-title">{relatedPost.title}</p>
+                    </a>
                 </div>
-            </div>
+            ))
+        ))}
+    </div>
+</div>
+
 
             <footer className={styles.footer}>
                 <a href="/" target="_blank" rel="noopener noreferrer" className={styles.title}>
