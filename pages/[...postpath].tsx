@@ -111,6 +111,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:height" content="600" />
             </Head>
 
+<header className={styles.header}>
+   <a href="/">HOME</a>
+ </header>
+
             <div className="post-container">
                 <h1>{post.title}</h1>
                 <img
