@@ -118,13 +118,12 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     alt={post.featuredImage.node.altText || post.title}
                 />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
-            </div>
 
 
-<h2>Related Posts</h2>
 
-<main className={styles.main}>
-    <div className={styles.grid}>
+      <main className={styles.main}>
+        <h2>Related Posts</h2>
+  <div className={styles.postGrid}>
         {post.categories?.nodes.map((category: any) => (
             category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
                 <div key={relatedPost.id} className={styles.postCard}>
@@ -138,8 +137,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
             ))
         ))}
     </div>
-</main>
-
+      </main>
+            </div>
 
             
 
