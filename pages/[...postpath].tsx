@@ -71,59 +71,62 @@ interface PostProps {
 }
 
 
-const Post: React.FC<PostProps> = (props) => {
-	const { post, host, path } = props;
+// Component function
+const Post = (props) => {
 
-	// to remove tags from excerpt
-	const removeTags = (str: string) => {
-		if (str === null || str === '') return '';
-		else str = str.toString();
-		return str.replace(/(<([^>]+)>)/gi, '').replace(/\[[^\]]*\]/, '');
+  const { post } = props;
 
-	};
+  // Meta tags content
+  const ogTitle = post.title;
+  const ogDescription = removeTags(post.excerpt);
+  const ogImage = post.featuredImage.node.sourceUrl; 
+  const ogUrl = '/' + post.id;
+  const ogType = 'article';
+  
+  return (
+    <>
+      <Head>
+        <meta property="og:title" content={ogTitle} />
+        
+        <meta 
+          property="og:description"
+          content={ogDescription}
+        />
 
-	
+        <meta
+          property="og:image" 
+          content={ogImage}
+        />
 
-	return (
-		<>
+        <meta
+          property="og:url"
+          content={ogUrl} 
+        />
 
-			<Head>
-<meta charSet="UTF-8" />
-  <meta name="robots" content="max-image-preview:large" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
+        <meta
+          property="og:type"  
+          content={ogType}
+        />
 
-  <meta property="og:title" content=" " />
+        <meta
+          property="og:image:width"
+          content="600"
+        />
 
-  <meta property="og:description" content="ㅤ" />
-				
-				<meta 
-  property="og:url"
-  content={post.featuredImage.node.sourceUrl}
-/>
+        <meta
+          property="og:image:height"
+          content="338" 
+        />
+      </Head>
 
-  <meta property="og:type" content="article" />
+      {/* Component content */}
 
-  <meta property="og:locale" content="en_US" />
+    </>
+  )
+}
 
-  <meta property="og:site_name" content={host.split('.')[0]} />
+// Component export
 
-  <meta 
-    property="article:published_time" 
-    content={post.dateGmt} 
-  />
-
-  <meta
-    property="article:modified_time"
-    content={post.modifiedGmt}
-  />
-
-  <meta 
-    property="og:image"
-    content={post.featuredImage.node.sourceUrl} 
-  />
-  <title>{post.title}</title>
-</Head>
-    
 
 			<div className="post-container">
 				<h1>{post.title}</h1>
