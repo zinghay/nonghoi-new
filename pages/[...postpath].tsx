@@ -3,6 +3,12 @@ import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
+// Hàm removeTags để loại bỏ các thẻ HTML từ một chuỗi
+const removeTags = (html: string): string => {
+  const regex = /(<([^>]+)>)/gi;
+  return html.replace(regex, '');
+};
+
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const endpoint = process.env.GRAPHQL_ENDPOINT as string;
 	const graphQLClient = new GraphQLClient(endpoint);
@@ -65,29 +71,59 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 
 interface PostProps {
-  post: any;
+	post: any;
+	host: string;
+	path: string;
 }
 
-const Post: React.FC<PostProps> = ({ post }) => {
+
+const Post: React.FC<PostProps> = (props: PostProps) => {
+  const { post } = props;
+
   // Meta tags content
   const ogTitle = post.title;
   const ogDescription = removeTags(post.excerpt);
   const ogImage = post.featuredImage.node.sourceUrl; 
-  const ogUrl = '/' + post.id;
-  const ogType = 'article';
+  const ogUrl = "/" + post.id;
+  const ogType = "article";
   
   return (
     <>
       <Head>
         <meta property="og:title" content={ogTitle} />
-        <meta property="og:description" content={ogDescription} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:url" content={ogUrl} />
-        <meta property="og:type" content={ogType} />
-        <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="338" />
+        
+        <meta 
+          property="og:description"
+          content={ogDescription}
+        />
+
+        <meta
+          property="og:image" 
+          content={ogImage}
+        />
+
+        <meta
+          property="og:url"
+          content={ogImage} 
+        />
+
+        <meta
+          property="og:type"  
+          content={ogType}
+        />
+
+        <meta
+          property="og:image:width"
+          content="600"
+        />
+
+        <meta
+          property="og:image:height"
+          content="600" 
+        />
       </Head>
 
+      {/* Component content */}
       <div className="post-container">
         <h1>{post.title}</h1>
         <img
@@ -97,22 +133,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <article dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
     </>
-  );
-};
-
-// Component export
-
-
-			<div className="post-container">
-				<h1>{post.title}</h1>
-				<img
-					src={post.featuredImage.node.sourceUrl}
-					alt={post.featuredImage.node.altText || post.title}
-				/>
-				<article dangerouslySetInnerHTML={{ __html: post.content }} />
-			</div>
-		</>
-	);
+  )
 };
 
 export default Post;
