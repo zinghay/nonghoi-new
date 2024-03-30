@@ -120,17 +120,19 @@ const Post: React.FC<PostProps> = ({ post }) => {
             </div>
 
 
+<h2>Related Posts</h2>
 
 <main className={styles.main}>
-    <h2>Related Posts</h2>
     <div className={styles.grid}>
         {post.categories?.nodes.map((category: any) => (
-            category.posts?.nodes.slice(0, 4).map((relatedPost: any) => (
+            category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
                 <div key={relatedPost.id} className={styles.postCard}>
-                    <a href={relatedPost.link}>
-                        <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.postImage} />
-                        <p className={styles.postTitle}>{relatedPost.title}</p>
-                    </a>
+                    <Link href={relatedPost.link}>
+                        <a>
+                            <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.postImage} />
+                            <p className={styles.postTitle}>{relatedPost.title}</p>
+                        </a>
+                    </Link>
                 </div>
             ))
         ))}
@@ -139,8 +141,12 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
             
 
+    
+
+            
+
             <footer className={styles.footer}>
-                <a href="/" target="_blank" rel="noopener noreferrer" className={styles.title}>
+                <a href="/" target="_blank" rel="noopener noreferrer" >
                     Powered by Park Ji Sung
                 </a>
             </footer>
