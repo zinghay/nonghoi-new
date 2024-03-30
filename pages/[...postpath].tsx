@@ -90,11 +90,13 @@ const Post: React.FC<PostProps> = (props: PostProps) => {
   return (
     <>
       <Head>
-        <meta property="og:title" content={ogTitle} />
+        <meta property="og:title" content="ㅤ
+" />
         
         <meta 
           property="og:description"
-          content={ogDescription}
+          content="ㅤ
+"
         />
 
         <meta
