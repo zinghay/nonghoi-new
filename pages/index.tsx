@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { GraphQLClient, gql } from 'graphql-request';
 import styles from '../styles/Home.module.css';
 
+
 interface Post {
   id: string;
   title: string;
@@ -46,6 +47,9 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
   // Lấy danh sách bài viết trang hiện tại
   const currentPosts = posts.slice(startIndex, endIndex);
+  
+  const currentPage = 1; // For example, currentPage is assigned the value 1
+
 
   return (
     <div className={styles.container}>
@@ -93,7 +97,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 <div className={styles.pagination_rounded}>
     <ul>
         <li>
-            <a href={currentPage > 1 ? `/prev-page-url` : '#'} className="prev">
+            <a href={`/?page=${currentPage > 1 ? currentPage - 1 : 1}`} className="prev">
                 <i className="fa fa-angle-left" aria-hidden="true"></i> Prev
             </a>
         </li>
@@ -105,12 +109,13 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
             </li>
         ))}
         <li>
-            <a href={currentPage < totalPages ? `/next-page-url` : '#'} className="next">
+            <a href={`/?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`} className="next">
                 Next <i className="fa fa-angle-right" aria-hidden="true"></i>
             </a>
         </li>
     </ul>
 </div>
+
 
 
 
