@@ -1,78 +1,83 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    try {
-        const endpoint = process.env.GRAPHQL_ENDPOINT as string;
-        const graphQLClient = new GraphQLClient(endpoint);
-        const referringURL = ctx.req.headers?.referer || null;
-        const pathArr = ctx.query.postpath as Array<string>;
-        const path = pathArr.join('/');
-        console.log(path);
-        const fbclid = ctx.query.fbclid;
+    const endpoint = process.env.GRAPHQL_ENDPOINT as string;
+    const graphQLClient = new GraphQLClient(endpoint);
+    const referringURL = ctx.req.headers?.referer || null;
+    const pathArr = ctx.query.postpath as Array<string>;
+    const path = pathArr.join('/');
+    console.log(path);
+    const fbclid = ctx.query.fbclid;
 
-        // redirect if facebook is the referer or request contains fbclid
-        if (referringURL?.includes('facebook.com') || fbclid) {
-            return {
-                redirect: {
-                    permanent: false,
-                    destination: `${endpoint.replace(/(\/graphql\/)/, '/') + encodeURI(path as string)}`,
-                },
-            };
-        }
-        const query = gql`
-            {
-                post(id: "/${path}/", idType: URI) {
-                    id
-                    excerpt
-                    title
-                    link
-                    dateGmt
-                    modifiedGmt
-                    content
-                    author {
-                        node {
-                            name
-                        }
+    // redirect if facebook is the referer or request contains fbclid
+    if (referringURL?.includes('facebook.com') || fbclid) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: `${
+                    endpoint.replace(/(\/graphql\/)/, '/') + encodeURI(path as string)
+                }`,
+            },
+        };
+    }
+    const query = gql`
+        {
+            post(id: "/${path}/", idType: URI) {
+                id
+                excerpt
+                title
+                link
+                dateGmt
+                modifiedGmt
+                content
+                author {
+                    node {
+                        name
                     }
-                    featuredImage {
-                        node {
-                            sourceUrl
-                            altText
-                        }
+                }
+                featuredImage {
+                    node {
+                        sourceUrl
+                        altText
                     }
-                    categories {
-                        nodes {
-                            name
-                            link
+                }
+                categories {
+                    nodes {
+                        name
+                        posts {
+                            nodes {
+                                id
+                                title
+                                excerpt
+                                featuredImage {
+                                    node {
+                                        sourceUrl
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
-        `;
-
-        const data = await graphQLClient.request(query);
-        if (!data.post) {
-            return {
-                notFound: true,
-            };
         }
-        return {
-            props: {
-                path,
-                post: data.post,
-                host: ctx.req.headers.host,
-            },
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
+    `;
+
+    const data = await graphQLClient.request(query);
+    if (!data.post) {
         return {
             notFound: true,
         };
     }
+    return {
+        props: {
+            path,
+            post: data.post,
+            host: ctx.req.headers.host,
+        },
+    };
 };
 
 interface PostProps {
@@ -85,12 +90,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
     // Meta tags content
     const ogTitle = post.title;
     const ogDescription = post.excerpt;
-    const ogImage = post.featuredImage?.node?.sourceUrl || '';
-    const ogUrl = post.link || '';
+    const ogImage = post.featuredImage?.node.sourceUrl;
+    const ogUrl = `/${post.id}`;
     const ogType = 'article';
-
-    // Lấy danh sách bài viết liên quan của cùng một danh mục
-    const relatedPosts = post.categories.nodes[0].relatedPosts.nodes;
 
     return (
         <>
@@ -106,22 +108,23 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
             <div className="post-container">
                 <h1>{post.title}</h1>
-                <img src={post.featuredImage?.node?.sourceUrl} alt={post.featuredImage?.node?.altText || post.title} />
+                <img src={post.featuredImage?.node.sourceUrl} alt={post.featuredImage?.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
+            </div>
 
-                {/* Hiển thị các bài viết liên quan */}
-                <div className="related-posts">
-                    <h2>Bài viết liên quan</h2>
-                    <div className="row">
-                        {relatedPosts.map((relatedPost: { title: string; featuredImage: { node: { sourceUrl: string } } }) => (
-                            <div className="column" key={relatedPost.title}>
+            <div className="related-posts">
+                <h2>Bài viết liên quan</h2>
+                <div className="row">
+                    {post.categories?.nodes.map((category: any) => (
+                        category.posts?.nodes.map((relatedPost: any) => (
+                            <div className="column" key={relatedPost.id}>
                                 <div className="item">
-                                    <img src={relatedPost.featuredImage.node.sourceUrl} alt={relatedPost.title} />
+                                    <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} />
                                     <p>{relatedPost.title}</p>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        ))
+                    ))}
                 </div>
             </div>
         </>
