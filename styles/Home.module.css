@@ -171,3 +171,15 @@
   height: auto;
   aspect-ratio: 4 / 3; /* Tỷ lệ khung hình 4:3 */
 }
+.col-md-4 {
+    flex: 0 0 calc(33.333333% - 1rem); /* Chia thành 3 cột */
+    max-width: calc(33.333333% - 1rem); /* Độ rộng tối đa của cột */
+    padding: 0.5rem; /* Khoảng cách giữa các cột */
+}
+
+@media (max-width: 992px) {
+    .col-md-4 {
+        flex: 0 0 calc(50% - 1rem); /* Chia thành 2 cột trên các thiết bị medium-sized */
+        max-width: calc(50% - 1rem); /* Độ rộng tối đa của cột */
+    }
+}
