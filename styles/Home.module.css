@@ -175,7 +175,7 @@
 .pagination_rounded, .pagination_square {
     display: block;
     margin: 35px auto 0;
-    font-size: x-large;
+    font-size: large;
 }
 
 .pagination_rounded ul {
