@@ -9,6 +9,11 @@ const removeTags = (html: string): string => {
   return html.replace(regex, '');
 };
 
+// Hàm để tạo URL tuyệt đối từ đường dẫn tương đối
+const absoluteURL = (relativePath: string, host: string): string => {
+  return `https://${host}${relativePath}`;
+};
+
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const endpoint = process.env.GRAPHQL_ENDPOINT as string;
 	const graphQLClient = new GraphQLClient(endpoint);
@@ -78,25 +83,23 @@ interface PostProps {
 
 
 const Post: React.FC<PostProps> = (props: PostProps) => {
-  const { post } = props;
+  const { post, host } = props;
 
   // Meta tags content
   const ogTitle = post.title;
   const ogDescription = removeTags(post.excerpt);
-  const ogImage = post.featuredImage.node.sourceUrl; 
+  const ogImage = absoluteURL(post.featuredImage.node.sourceUrl, host); // Chuyển đổi URL thành URL tuyệt đối
   const ogUrl = "/" + post.id;
   const ogType = "article";
   
   return (
     <>
       <Head>
-        <meta property="og:title" content="ㅤ
-" />
+        <meta property="og:title" content={ogTitle} />
         
         <meta 
           property="og:description"
-          content="ㅤ
-"
+          content={ogDescription}
         />
 
         <meta
