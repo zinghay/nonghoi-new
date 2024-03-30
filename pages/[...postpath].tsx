@@ -65,17 +65,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 
 interface PostProps {
-	post: any;
-	host: string;
-	path: string;
+  post: any;
 }
 
-
-// Component function
-const Post = (props) => {
-
-  const { post } = props;
-
+const Post: React.FC<PostProps> = ({ post }) => {
   // Meta tags content
   const ogTitle = post.title;
   const ogDescription = removeTags(post.excerpt);
@@ -87,43 +80,25 @@ const Post = (props) => {
     <>
       <Head>
         <meta property="og:title" content={ogTitle} />
-        
-        <meta 
-          property="og:description"
-          content={ogDescription}
-        />
-
-        <meta
-          property="og:image" 
-          content={ogImage}
-        />
-
-        <meta
-          property="og:url"
-          content={ogUrl} 
-        />
-
-        <meta
-          property="og:type"  
-          content={ogType}
-        />
-
-        <meta
-          property="og:image:width"
-          content="600"
-        />
-
-        <meta
-          property="og:image:height"
-          content="338" 
-        />
+        <meta property="og:description" content={ogDescription} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:url" content={ogUrl} />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="338" />
       </Head>
 
-      {/* Component content */}
-
+      <div className="post-container">
+        <h1>{post.title}</h1>
+        <img
+          src={post.featuredImage.node.sourceUrl}
+          alt={post.featuredImage.node.altText || post.title}
+        />
+        <article dangerouslySetInnerHTML={{ __html: post.content }} />
+      </div>
     </>
-  )
-}
+  );
+};
 
 // Component export
 
