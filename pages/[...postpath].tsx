@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.css'; // Import CSS styles
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const endpoint = process.env.GRAPHQL_ENDPOINT as string;
@@ -109,7 +109,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
             </Head>
 
 
-                        <Head>
+<Head>
                 <title>{post.title}</title>
                 <meta name="description" content={post.excerpt} />
             </Head>
@@ -124,8 +124,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <div className="related-posts">
                     <h2>Bài viết liên quan</h2>
                     <div className="row">
-                        {post.categories?.nodes.map((category, index) => (
-                            category.posts?.nodes.map((relatedPost, index) => (
+                        {post.categories?.nodes.map((category: any) => ( // Chỉ định kiểu của tham số category
+                            category.posts?.nodes.map((relatedPost: any) => (
                                 <div className="col-md-4" key={relatedPost.id}>
                                     <div className="item card">
                                         <a href={relatedPost.link} className="card-link">
@@ -140,14 +140,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 </div>
             </main>
 
-
-            <footer className="footer">
-                <a
-                    href="https://animalaz.netlify.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="title"
-                >
+            <footer className={styles.footer}>
+                <a href="https://animalaz.netlify.app/" target="_blank" rel="noopener noreferrer" className={styles.title}>
                     Powered by Animalaz
                 </a>
             </footer>
