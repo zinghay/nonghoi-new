@@ -108,21 +108,18 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:height" content="338" />
             </Head>
 
-
-<Head>
-                <title>{post.title}</title>
-                <meta name="description" content={post.excerpt} />
-            </Head>
-
-            <main className={styles.main}>
-                <div className={styles.postGrid}>
-                    <h3 className={styles.postTitle}>{post.title}</h3>
-                    <img src={post.featuredImage?.node.sourceUrl} alt={post.featuredImage?.node.altText || post.title} className={styles.postImage} />
-                    <article dangerouslySetInnerHTML={{ __html: post.content }} />
-                </div>
+ <div className="post-container">
+        <h1>{post.title}</h1>
+        <img
+          src={post.featuredImage.node.sourceUrl}
+          alt={post.featuredImage.node.altText || post.title}
+        />
+        <article dangerouslySetInnerHTML={{ __html: post.content }} />
+      </div>
+        
 
                 <div className="related-posts">
-                    <h2>Bài viết liên quan</h2>
+                    <h2>Related Posts</h2>
                     <div className="row">
                         {post.categories?.nodes.map((category: any) => ( // Chỉ định kiểu của tham số category
                             category.posts?.nodes.map((relatedPost: any) => (
