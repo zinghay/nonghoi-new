@@ -75,15 +75,26 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	};
 };
 
+interface RelatedPost {
+	id: string;
+	title: string;
+	featuredImage: {
+		node: {
+			sourceUrl: string;
+			altText: string;
+		};
+	};
+}
+
 interface PostProps {
 	post: any;
 	host: string;
 	path: string;
+	relatedPosts: RelatedPost[];
 }
 
-
 const Post: React.FC<PostProps> = (props: PostProps) => {
-  const { post, host } = props;
+  const { post, host, relatedPosts } = props;
 
   // Meta tags content
   const ogTitle = post.title;
@@ -109,7 +120,7 @@ const Post: React.FC<PostProps> = (props: PostProps) => {
 
         <meta
           property="og:url"
-          content={ogImage} 
+          content={ogUrl} 
         />
 
         <meta
@@ -124,11 +135,11 @@ const Post: React.FC<PostProps> = (props: PostProps) => {
 
         <meta
           property="og:image:height"
-          content="600" 
+          content="338" 
         />
       </Head>
 
-      {/* Component content */}
+      {/* Hiển thị nội dung của bài viết */}
       <div className="post-container">
         <h1>{post.title}</h1>
         <img
@@ -136,6 +147,22 @@ const Post: React.FC<PostProps> = (props: PostProps) => {
           alt={post.featuredImage.node.altText || post.title}
         />
         <article dangerouslySetInnerHTML={{ __html: post.content }} />
+      </div>
+
+      {/* Hiển thị danh sách bài viết liên quan */}
+      <div className="related-posts">
+        <h2>Bài viết liên quan</h2>
+        <div className="related-posts-grid">
+          {relatedPosts.map((relatedPost: RelatedPost) => (
+            <div key={relatedPost.id} className="related-post">
+              <img
+                src={relatedPost.featuredImage.node.sourceUrl}
+                alt={relatedPost.featuredImage.node.altText || relatedPost.title}
+              />
+              <h3>{relatedPost.title}</h3>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )
