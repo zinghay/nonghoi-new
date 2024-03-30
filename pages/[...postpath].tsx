@@ -79,6 +79,8 @@ const Post: React.FC<PostProps> = (props) => {
 		if (str === null || str === '') return '';
 		else str = str.toString();
 		return str.replace(/(<([^>]+)>)/gi, '').replace(/\[[^\]]*\]/, '');
+
+		const imageUrl = post.featuredImage.node.sourceUrl;
 	};
 
 	
