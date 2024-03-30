@@ -176,16 +176,11 @@
   flex-wrap: wrap;
 }
 
-.col-md-4 {
-  flex: 0 0 33.33%; /* Chia thành 3 cột */
-  max-width: 33.33%; /* Độ rộng tối đa của cột */
-  padding: 0.5rem; /* Khoảng cách giữa các cột */
-  box-sizing: border-box; /* Box-sizing để padding không làm thay đổi kích thước */
+.col-20 {
+    flex: 0 0 20%;
+    max-width: 20%;
 }
-
-@media (max-width: 992px) {
-  .col-md-4 {
-    flex: 0 0 50%; /* Chia thành 2 cột trên các thiết bị medium-sized */
-    max-width: 50%; /* Độ rộng tối đa của cột */
-  }
+.col-40 {
+    flex: 0 0 40%;
+    max-width: 40%;
 }
