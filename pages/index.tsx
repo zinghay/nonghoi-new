@@ -1,136 +1,145 @@
-import React from 'react';
+
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import { GraphQLClient, gql } from 'graphql-request';
+import styles from '../styles/Home.module.css';
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    try {
-        const endpoint = process.env.GRAPHQL_ENDPOINT as string;
-        const graphQLClient = new GraphQLClient(endpoint);
-        const referringURL = ctx.req.headers?.referer || null;
-        const pathArr = ctx.query.postpath as Array<string>;
-        const path = pathArr.join('/');
-        console.log(path);
-        const fbclid = ctx.query.fbclid;
-
-        // redirect if facebook is the referer or request contains fbclid
-        if (referringURL?.includes('facebook.com') || fbclid) {
-            return {
-                redirect: {
-                    permanent: false,
-                    destination: `${endpoint.replace(/(\/graphql\/)/, '/') + encodeURI(path as string)}`,
-                },
-            };
-        }
-        const query = gql`
-            {
-                post(id: "/${path}/", idType: URI) {
-                    id
-                    excerpt
-                    title
-                    link
-                    dateGmt
-                    modifiedGmt
-                    content
-                    author {
-                        node {
-                            name
-                        }
-                    }
-                    featuredImage {
-                        node {
-                            sourceUrl
-                            altText
-                        }
-                    }
-                    categories {
-                        nodes {
-                            name
-                        }
-                    }
-                }
-            }
-        `;
-
-        const data = await graphQLClient.request(query);
-        if (!data.post) {
-            return {
-                notFound: true,
-            };
-        }
-        return {
-            props: {
-                path,
-                post: data.post,
-                host: ctx.req.headers.host,
-            },
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return {
-            notFound: true,
-        };
+interface Post {
+  id: string;
+  title: string;
+  excerpt: string;
+  featuredImage: {
+    node: {
+      sourceUrl: string;
+      altText: string;
     }
-};
-
-interface PostProps {
-    post: any;
-    host: string;
-    path: string;
+  };
+  categories: {
+    nodes: {
+      name: string;
+    }[];
+  };
+  modifiedGmt: string;
+  uri: string;
+  link: string;
 }
 
-const Post: React.FC<PostProps> = ({ post }) => {
-    // Meta tags content
-    const ogTitle = post.title;
-    const ogDescription = post.excerpt;
-    const ogImage = post.featuredImage?.node?.sourceUrl || '';
-    const ogUrl = post.link || '';
-    const ogType = 'article';
+interface HomeProps {
+  posts: Post[];
+}
 
-    return (
-        <>
-            <Head>
-                <meta property="og:title" content={ogTitle} />
-                <meta property="og:description" content={ogDescription} />
-                <meta property="og:image" content={ogImage} />
-                <meta property="og:url" content={ogUrl} />
-                <meta property="og:type" content={ogType} />
-                <meta property="og:image:width" content="600" />
-                <meta property="og:image:height" content="338" />
-            </Head>
+const Home: NextPage<HomeProps> = ({ posts }) => {
+  const router = useRouter();
+  const { page } = router.query;
 
-            <div className="post-container">
-                <h1>{post.title}</h1>
-                <img src={post.featuredImage?.node?.sourceUrl} alt={post.featuredImage?.node?.altText || post.title} />
-                <article dangerouslySetInnerHTML={{ __html: post.content }} />
+  // Số bài viết hiển thị trên mỗi trang
+  const postsPerPage = 12;
 
-                {/* Hiển thị các bài viết liên quan */}
-                <div className="related-posts">
-                    <h2>Bài viết liên quan</h2>
-                    <ul>
-                        {/* Hiển thị danh sách các bài viết liên quan */}
-                        {post.categories.nodes.map((category: { name: string }) => (
-                            <li key={category.name}>
-                                <h3>{category.name}</h3>
-                                <ul>
-                                    {post.categories.nodes
-                                        .filter((node: { name: string }) => node.name !== category.name)
-                                        .map((relatedPost: { name: string }) => (
-                                            <li key={relatedPost.name}>
-                                                <Link href={`/${relatedPost.name.toLowerCase()}`}>
-                                                    <a>{relatedPost.name}</a>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                </ul>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+  // Tính toán số trang
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  // Lấy chỉ mục bắt đầu và kết thúc của bài viết trang hiện tại
+  const startIndex = (parseInt(page as string) - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+
+  // Lấy danh sách bài viết trang hiện tại
+  const currentPosts = posts.slice(startIndex, endIndex);
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Blog</title>
+        <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
+      </Head>
+
+      <header className={styles.header}>
+        <Link href="/">
+          <a>
+            <img src="" alt="Home" className={styles.logo} />
+          </a>
+        </Link>
+      </header>
+
+      <main className={styles.main}>
+        
+  <div className={styles.postGrid}>
+          {posts.map((post) => (
+            <div key={post.id} className={styles.postCard}>
+              <Link href={post.link}>
+                <a>
+                  <img
+                    src={post.featuredImage.node.sourceUrl}
+                    alt={post.featuredImage.node.altText || post.title}
+                    className={styles.postImage}
+                  />
+                  <h2 className={styles.postTitle}>{post.title}</h2>
+                  <div className={styles.postMeta}>
+                    <span className={styles.postCategory}>
+                      {post.categories.nodes.map((category) => category.name).join(', ')}
+                    </span>
+                    <span className={styles.postDate}>{new Date(post.modifiedGmt).toLocaleDateString()}</span>
+                  </div>
+                </a>
+              </Link>
             </div>
-        </>
-    );
+          ))}
+        </div>
+
+        <div className={styles.pagination}>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <Link href={`/?page=${index + 1}`} key={index}>
+              <a className={parseInt(page as string) === index + 1 ? styles.activePage : undefined}>{index + 1}</a>
+            </Link>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
 };
 
-export default Post;
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const endpoint = process.env.GRAPHQL_ENDPOINT as string;
+  const graphQLClient = new GraphQLClient(endpoint);
+  const baseUrl = `https://${req.headers.host}`;
+
+  const query = gql`
+    {
+      posts(first: 20, where: { orderby: { field: MODIFIED, order: DESC } }) {
+        nodes {
+          id
+          title
+          excerpt
+          featuredImage {
+            node {
+              sourceUrl
+              altText
+            }
+          }
+          categories {
+            nodes {
+              name
+            }
+          }
+          modifiedGmt
+          uri
+        }
+      }
+    }
+  `;
+
+  const data = await graphQLClient.request(query);
+  const posts: Post[] = data.posts.nodes.map((post: any) => ({
+    ...post,
+    link: `${baseUrl}/${post.uri}`,
+  }));
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+
+export default Home;
