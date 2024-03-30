@@ -56,10 +56,9 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
- <header className={styles.header}>
-                <a href="/" alt="Home" >
-                  HOME </a> 
-            </header>
+ <header className={styles.header} style="header">
+   <a href="/">HOME</a>
+ </header>
       
       <main className={styles.main}>
         
