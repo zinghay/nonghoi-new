@@ -80,7 +80,6 @@ const Post: React.FC<PostProps> = (props) => {
 		else str = str.toString();
 		return str.replace(/(<([^>]+)>)/gi, '').replace(/\[[^\]]*\]/, '');
 
-		const imageUrl = post.featuredImage.node.sourceUrl;
 	};
 
 	
@@ -99,7 +98,7 @@ const Post: React.FC<PostProps> = (props) => {
 				
 				<meta 
   property="og:url"
-  content={`${imageUrl}`}
+  content={post.featuredImage.node.sourceUrl}
 />
 
   <meta property="og:type" content="article" />
