@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { GraphQLClient, gql } from 'graphql-request';
 import styles from '../styles/Home.module.css';
 
-
 interface Post {
   id: string;
   title: string;
@@ -57,14 +56,6 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
-
-      <header className={styles.header}>
-        <Link href="/">
-          <a>
-            <img src="" alt="Home" className={styles.logo} />
-          </a>
-        </Link>
-      </header>
 
       <main className={styles.main}>
         
