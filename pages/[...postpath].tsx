@@ -47,6 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
                     categories {
                         nodes {
                             name
+                            link
                         }
                     }
                 }
@@ -88,6 +89,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
     const ogUrl = post.link || '';
     const ogType = 'article';
 
+    // Lấy danh sách bài viết liên quan của cùng một danh mục
+    const relatedPosts = post.categories.nodes[0].relatedPosts.nodes;
+
     return (
         <>
             <Head>
@@ -108,25 +112,16 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 {/* Hiển thị các bài viết liên quan */}
                 <div className="related-posts">
                     <h2>Bài viết liên quan</h2>
-                    <ul>
-                        {/* Hiển thị danh sách các bài viết liên quan */}
-                        {post.categories.nodes.map((category: { name: string }) => (
-                            <li key={category.name}>
-                                <h3>{category.name}</h3>
-                                <ul>
-                                    {post.categories.nodes
-                                        .filter((node: { name: string }) => node.name !== category.name)
-                                        .map((relatedPost: { name: string }) => (
-                                            <li key={relatedPost.name}>
-                                                <Link href={`/${relatedPost.name.toLowerCase()}`}>
-                                                    <a>{relatedPost.name}</a>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                </ul>
-                            </li>
+                    <div className="row">
+                        {relatedPosts.map((relatedPost: { title: string; featuredImage: { node: { sourceUrl: string } } }) => (
+                            <div className="column" key={relatedPost.title}>
+                                <div className="item">
+                                    <img src={relatedPost.featuredImage.node.sourceUrl} alt={relatedPost.title} />
+                                    <p>{relatedPost.title}</p>
+                                </div>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 </div>
             </div>
         </>
