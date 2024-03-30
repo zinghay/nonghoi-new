@@ -123,7 +123,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     <div className="row">
         {post.categories?.nodes.map((category: any) => (
             category.posts?.nodes.slice(0, 6).map((relatedPost: any) => ( // Chỉ lấy 6 bài viết đầu tiên
-                <div className="col-md-4" key={relatedPost.id}>
+                <div className="col col-40" key={relatedPost.id}>
                     <div className="item card">
                         <a href={relatedPost.link} className="card-link">
                             <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.postImage} />
