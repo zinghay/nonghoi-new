@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
@@ -139,9 +140,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
     </div>
 </main>
 
-            
-
-    
 
             
 
