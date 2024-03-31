@@ -100,8 +100,11 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
     return (
         <>
-            <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <div className={styles.container}>
+      <Head>
+        <title>Blog</title>
+        <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
+           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta property="og:title" content="" />
                 <meta property="og:description" content="ㅤ" />
                 <meta property="og:image" content={ogImage} />
@@ -109,32 +112,24 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:type" content={ogType} />
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
-            </Head>
-
-                <Head>
-                    <title>Blog</title>
-                    <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
-                </Head>
-
-                <header className={styles.header}>
-                    <a href="/"><h2>HOME</h2></a>
-                </header>
-                <div className={styles.topnav}>
-                    <a href="#">Animal</a>
-                    <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
-                        <div className={styles["input-group"]}>
-                            <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
-                            <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
-                        </div>
-                    </form>
-                </div>
-            <div className={styles.container}>
-                                <main className={styles.main}>
+      </Head>
+      <header className={styles.header}>
+        <a href="/"><h2>HOME</h2></a>
+      </header>
+      <div className={styles.topnav}>
+        <a href="#">Animal</a>
+        <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
+          <div className={styles["input-group"]}>
+            <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
+            <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
+          </div>
+        </form>
+      </div>
+      <main className={styles.main}>
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
-                </main>
-            </div>
+      </main>
 
                     <div className={styles.postGrid}>
                                             <h2>Related Posts</h2>
@@ -157,6 +152,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     Powered by Park Ji Sung
                 </a>
             </footer>
+                          </div>
+
         </>
     );
 };
