@@ -1,18 +1,18 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.item {
-  width: 100%;
-}
-/* Chỉ áp dụng flex-direction ngược lại khi trên điện thoại */
+/* Định dạng cho các màn hình có chiều rộng nhỏ hơn hoặc bằng 600px */
 @media only screen and (max-width: 600px) {
+  /* Thực hiện các thay đổi CSS ở đây */
+
   .container {
-    flex-direction: column-reverse;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Ẩn một phần tử nào đó */
+  .hidden-on-mobile {
+    display: none;
   }
 }
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -21,15 +21,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.mainbv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 70%;
-  margin: 0 auto; /* Canh chỉnh mainbv giữa trang */
-  padding: 1rem; /* Padding giữa nội dung và mép của mainbv */
 }
 
 .img {
@@ -286,3 +277,41 @@ a.link {
     line-height: 34px;
 }
 
+/* post page */
+
+.postContainer {
+  max-width: 800px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.postContainer > * {
+  padding: 10px 0;
+}
+
+.postContainer img {
+  max-width: 100%; /* Hình ảnh tự động thu nhỏ khi vượt quá kích thước của mainbv */
+  height: auto; /* Đảm bảo tỷ lệ khung hình không bị méo */
+  display: block;
+  margin: 0 auto; /* Canh chỉnh hình ảnh giữa mainbv */
+
+}
+
+.postContainer p {
+  text-align: justify;
+}
+
+.postContainer figure {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.postContainer figure cite::before {
+  content: "-";
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.postContainer .heateor_sss_sharing_container {
+  display: none;
+}
