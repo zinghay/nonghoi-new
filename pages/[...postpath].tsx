@@ -112,24 +112,24 @@ const Post: React.FC<PostProps> = ({ post }) => {
             </Head>
 
 
-<div className={styles.navbar}>
-  <a className={styles.active} href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <div className={styles.dropdown}>
-    <button className={styles.dropbtn}>Dropdown
-      <i className="fa fa-caret-down"></i>
-    </button>
-    <div className={styles.dropdownContent}>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div>
-</div>
+    <div className={styles.container}>
+      <Head>
+        <title>Blog</title>
+        <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
+      </Head>
 
-
-            <div className="post-container">
+      <header className={styles.header}>
+        <a href="/"><h2>HOME</h2></a>
+      </header>
+      <div className={styles.topnav}>
+        <a href="#">Animal</a>
+        <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
+          <div className={styles["input-group"]}>
+            <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
+            <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
+          </div>
+        </form>
+      
                 <h1>{post.title}</h1>
                 <img
                     src={post.featuredImage.node.sourceUrl}
@@ -156,13 +156,14 @@ const Post: React.FC<PostProps> = ({ post }) => {
         ))}
     </div>
       </main>
-            </div>
 
             <footer className={styles.footer}>
                 <a href="/" rel="noopener noreferrer" >
                     Powered by Park Ji Sung
                 </a>
             </footer>
+ </div>
+
         </>
     );
 };
