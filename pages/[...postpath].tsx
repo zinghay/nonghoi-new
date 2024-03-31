@@ -7,10 +7,10 @@ import React from 'react'; import Link from 'next/link'; import Head from 'next/
           <meta property="og:title" content="" />
           <meta property="og:description" content="ㅤ" />
           <meta property="og:image" content={ogImage} />
-          <meta property="og:url" content={ogImage} />
+          <meta property="og:url" content={ogUrl} />
           <meta property="og:type" content={ogType} />
           <meta property="og:image:width" content="600" />
-          <meta property="og:image:height" content="600" />
+          <meta property="og:image:height" content="315" />
         </Head>
         <header className={styles.header}>
           <a href="/">
