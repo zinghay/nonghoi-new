@@ -99,7 +99,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
     const ogType = 'article';
 
     return (
-                <div className={styles.container}>
       <Head>
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
@@ -112,6 +111,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
       </Head>
+        
       <header className={styles.header}>
         <a href="/"><h2>HOME</h2></a>
       </header>
@@ -124,14 +124,16 @@ const Post: React.FC<PostProps> = ({ post }) => {
           </div>
         </form>
       </div>
+                    <div className={styles.container}>
       <main className={styles.main}>
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
       </main>
+                </div>
+                                            <h2>Related Posts</h2>
 
                     <div className={styles.postGrid}>
-                                            <h2>Related Posts</h2>
                         {post.categories?.nodes.map((category: any) => (
                             category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
                                 <div key={relatedPost.id} className={styles.postCard}>
@@ -151,7 +153,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     Powered by Park Ji Sung
                 </a>
             </footer>
-                </div>
     );
 };
 
