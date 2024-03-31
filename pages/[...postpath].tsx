@@ -151,8 +151,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     Powered by Park Ji Sung
                 </a>
             </footer>
-                          </div>
-
+                </div>
     );
 };
 
