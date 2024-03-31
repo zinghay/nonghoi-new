@@ -60,6 +60,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
 <header className={styles.header}>
   <a href="/"><h2>HOME</h2></a>
+  </header>
   <div className={styles.topnav}>
     <a href="#">Animal</a> 
     <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
