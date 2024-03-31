@@ -28,13 +28,13 @@ a {
 
 /* post page */
 
-.post-container {
+.postContainer {
   max-width: 1020px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
-.post-container > * {
+.postContainer > * {
   padding: 20px 0;
 }
 
