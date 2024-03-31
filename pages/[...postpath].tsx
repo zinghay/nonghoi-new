@@ -99,6 +99,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     const ogType = 'article';
 
     return (
+        <div>
       <Head>
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
@@ -153,6 +154,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     Powered by Park Ji Sung
                 </a>
             </footer>
+          </div>
     );
 };
 
