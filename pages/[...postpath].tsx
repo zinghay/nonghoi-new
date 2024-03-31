@@ -1,9 +1,19 @@
 import React from 'react'; import Link from 'next/link'; import Head from 'next/head'; import { GetServerSideProps } from 'next'; import { GraphQLClient, gql } from 'graphql-request'; import styles from '../styles/Home.module.css'; // Import CSS styles export const getServerSideProps: GetServerSideProps = async (ctx) => { const endpoint = process.env.GRAPHQL_ENDPOINT as string; const graphQLClient = new GraphQLClient(endpoint); const referringURL = ctx.req.headers?.referer || null; const pathArr = ctx.query.postpath as Array <string>; const path = pathArr.join('/'); console.log(path); const fbclid = ctx.query.fbclid; // Redirect if Facebook is the referer or request contains fbclid if (referringURL?.includes('facebook.com') || fbclid) { return { redirect: { permanent: false, destination: `${ endpoint.replace(/(\/graphql\/)/, '/') + encodeURI(path as string) }`, }, }; } const query = gql` { post(id: "/${path}/", idType: URI) { id excerpt title link dateGmt modifiedGmt content author { node { name } } featuredImage { node { sourceUrl altText } } categories { nodes { name posts { nodes { id title excerpt featuredImage { node { sourceUrl } } link } } } } } } `; const data = await graphQLClient.request(query); if (!data.post) { return { notFound: true, }; } return { props: { path, post: data.post, host: ctx.req.headers.host, }, }; }; interface PostProps { post: any; host: string; path: string; } const Post: React.FC <PostProps> = ({ post }) => { // Meta tags content const ogTitle = post.title; const ogDescription = post.excerpt; const ogImage = post.featuredImage?.node.sourceUrl; const ogUrl = `/${post.id}`; const ogType = 'article'; return ( <>
-             <div className={styles.container}>
-   <Head>
+        <Head>
           <title>Blog</title>
           <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    
+        
+          
+    
+
+        
+        Expand All
+    
+    @@ -11,7 +12,6 @@ import React from 'react'; import Link from 'next/link'; import Head from 'next/
+  
           <meta property="og:title" content="" />
           <meta property="og:description" content="ㅤ" />
           <meta property="og:image" content={ogImage} />
@@ -12,9 +22,21 @@ import React from 'react'; import Link from 'next/link'; import Head from 'next/
           <meta property="og:image:width" content="600" />
           <meta property="og:image:height" content="315" />
         </Head>
+        <div className={styles.container}>
         <header className={styles.header}>
           <a href="/">
             <h2>HOME</h2>
+
+    
+          
+            
+    
+
+          
+          Expand Down
+    
+    
+  
           </a>
         </header>
         <div className={styles.topnav}>
