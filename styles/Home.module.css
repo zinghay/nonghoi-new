@@ -59,10 +59,9 @@
     font-weight: bold; /* Loại bỏ dòng color và giữ nguyên màu chữ */
 }
 
-#header .search-form {
+.form {
     min-width: 250px;
 }
-
 
     .my-lg-0 {
         margin-bottom: 0!important;
@@ -233,7 +232,7 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3; /* Tỷ lệ khung hình 4:3 */
+  aspect-ratio: 4/3; /* Tỷ lệ khung hình 4:3 */
 }
 
 .pagination_rounded, .pagination_square {
@@ -281,12 +280,12 @@ a.link {
 
 .postContainer {
   max-width: 800px;
-  padding: 0 10px;
+  padding: 0 20px;
   margin: 0 auto;
 }
 
 .postContainer > * {
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .postContainer img {
