@@ -51,7 +51,6 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
 
   return (
-   <div className={styles.container}>
     <Head>
       <title>Blog</title>
       <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
@@ -69,7 +68,6 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         </div>
       </form>
     </div>
-  </div>
 
 
 
