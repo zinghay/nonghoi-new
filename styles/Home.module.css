@@ -13,8 +13,8 @@
 }
 
 .header {
-	    background-color: ecece7;
-	    color: eaeaea;
+	   background-color: ecece7;
+	    color: inherit;
 	    padding: 10px;
 	    text-align: center;
 	  }
@@ -44,6 +44,8 @@
 
 .footer {
   display: flex;
+  color: inherit;
+  background-color:  ecece7;
   flex: 1;
   padding: 2rem 0;
   border-top: 1px solid eaeaea;
