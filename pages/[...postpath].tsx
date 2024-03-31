@@ -111,7 +111,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:height" content="600" />
             </Head>
 
-            <div className={styles.containerbv}>
                 <Head>
                     <title>Blog</title>
                     <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
@@ -129,14 +128,16 @@ const Post: React.FC<PostProps> = ({ post }) => {
                         </div>
                     </form>
                 </div>
-
+            <div className={styles.container}>
+                                <main className={styles.main}>
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
+                </main>
+            </div>
 
-                <main className={styles.main}>
-                    <h2>Related Posts</h2>
                     <div className={styles.postGrid}>
+                                            <h2>Related Posts</h2>
                         {post.categories?.nodes.map((category: any) => (
                             category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
                                 <div key={relatedPost.id} className={styles.postCard}>
@@ -150,8 +151,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                             ))
                         ))}
                     </div>
-                </main>
-            </div>
 
             <footer className={styles.footer}>
                 <a href="/" rel="noopener noreferrer" >
