@@ -115,21 +115,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
    <a href="/">HOME</a>
  </header>
 
-            <div className="{styles.navbar}>
-  <a className={styles.active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <div className={styles.dropdown}>
-    <button className={styles.dropbtn}>Dropdown
-      <i className="fa fa-caret-down"></i>
-    </button>
-    <div className={styles.dropdown-content}>
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div>
-</div>
 
             <div className="post-container">
                 <h1>{post.title}</h1>
