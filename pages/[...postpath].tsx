@@ -112,12 +112,11 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
       </Head>
-        
       <header className={styles.header}>
-        <a href="/"><h2>HOME</h2></a>
+        <a href="/"><h2>Blog New</h2></a>
       </header>
       <div className={styles.topnav}>
-        <a href="#">Animal</a>
+        <a href="/">Home</a>
         <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
           <div className={styles["input-group"]}>
             <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
