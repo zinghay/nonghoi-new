@@ -128,7 +128,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                         </div>
                     </form>
                 </div>
-                <main className={styles.main}>
+                <main className={styles.mainbv}>
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
