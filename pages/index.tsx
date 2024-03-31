@@ -57,11 +57,20 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
 
- <header className={styles.header}>
-   <a href="/"><h2>HOME</h2></a>
- </header>
-      <div className={styles.topnav}><a href="#">Animal</a> </div>
-      
+
+<header className={styles.header}>
+      <a href="/"><h2>HOME</h2></a>
+      <div className={styles.topnav}>
+        <a href="#">Animal</a> 
+        <form className="search-form my-2 my-lg-0" role="search" method="get" action="https://chanlysong.net/">
+          <div className="input-group">
+            <input type="text" name="s" className="form-control" placeholder="Search" title="Search" />
+            <button type="submit" name="submit" className="btn btn-outline-secondary">Search</button>
+          </div>
+        </form>
+      </div>
+    </header>
+
       <main className={styles.main}> 
   <div className={styles.postGrid}>
           {posts.map((post) => (
