@@ -84,8 +84,8 @@
 
 
 .header {
-	   background-color: ecece7;
-	    color: inherit;
+	   background-color: #ecece7;
+	    color: #4285f4;
 	    padding: 10px;
 	    text-align: center;
 	  }
@@ -93,14 +93,14 @@
 	  /* Định dạng thanh điều hướng trên cùng */
 	  .topnav {
 	    overflow: hidden;
-	    background-color: 4285f4;
+	    background-color: #4285f4;
 	  }
 
 	  /* Định dạng link điều hướng */
 	  .topnav a {
 	    float: left;
 	    display: block;
-	    color: 4285f4;
+	    color: #4285f4;
 	    text-align: center;
 	    padding: 14px 16px;
 	    text-decoration: none;
@@ -108,7 +108,7 @@
 
 	  /* Thay đổi màu liên kết khi di chuột qua */
 	  .topnav a:hover {
-	    background-color: eaeaea;
+	    background-color: #eaeaea;
 	    color: white;
 	    font-weight: bold
 	  }
@@ -119,10 +119,10 @@
 .footer {
   display: flex;
   color: inherit;
-  background-color:  ecece7;
+  background-color:  #4285f4;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid eaeaea;
+  border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
 }
@@ -298,7 +298,7 @@
 .pagination_rounded ul li a:hover {
     background: 4285f4;
     color: fff;
-    border: 1px solid 4285f4;
+    border: 1px solid #4285f4;
 }
 
 a.link {
