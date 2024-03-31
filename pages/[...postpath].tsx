@@ -113,6 +113,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     <a href="/"><h2>HOME</h2></a>
                 </header>
 <div className={styles.container}>
+      <main className={styles.main}>
 
                 <div className={styles.topnav}>
                     <a href="#">Animal</a>
@@ -128,6 +129,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
 </div>
+</main>
+
 
                     <h2>Related Posts</h2>
                     <div className={styles.postGrid}>
