@@ -101,6 +101,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     return (
         <>
             <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta property="og:title" content="" />
                 <meta property="og:description" content="ㅤ" />
                 <meta property="og:image" content={ogImage} />
