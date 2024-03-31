@@ -109,7 +109,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
             </Head>
-
             <div className={styles.container}>
                 <header className={styles.header}>
                     <a href="/"><h2>HOME</h2></a>
@@ -124,11 +123,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     </form>
                 </div>
 
-                <main className={styles.main}>
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
-                </main>
                     <h2>Related Posts</h2>
                     <div className={styles.postGrid}>
                         {post.categories?.nodes.map((category: any) => (
