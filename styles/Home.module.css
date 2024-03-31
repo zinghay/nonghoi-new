@@ -12,6 +12,77 @@
   align-items: center;
 }
 
+/* Navbar styles */
+.navbar {
+  background-color: #333; /* Màu nền của navbar */
+  overflow: hidden; /* Xóa bỏ hiển thị khi menu quá dài */
+}
+
+.navbar a {
+  float: left; /* Căn trái các phần tử menu */
+  display: block; /* Hiển thị dạng block */
+  color: #f2f2f2; /* Màu chữ của menu */
+  text-align: center; /* Căn giữa nội dung của menu */
+  padding: 14px 16px; /* Khoảng cách giữa các phần tử */
+  text-decoration: none; /* Xóa gạch chân dưới của liên kết */
+}
+
+.navbar a:hover {
+  background-color: #ddd; /* Màu nền khi di chuột qua */
+  color: black; /* Màu chữ khi di chuột qua */
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #666; /* Màu nền của phần tử đang active */
+  color: white; /* Màu chữ của phần tử đang active */
+}
+
+/* Dropdown container */
+.dropdown {
+  float: left; /* Căn trái phần tử dropdown */
+  overflow: hidden; /* Xóa bỏ hiển thị khi menu quá dài */
+}
+
+.dropdown .dropbtn {
+  font-size: 16px; /* Cỡ chữ của phần tử dropdown */
+  border: none; /* Xóa viền */
+  outline: none; /* Xóa đường viền khi focus */
+  color: white; /* Màu chữ */
+  padding: 14px 16px; /* Khoảng cách giữa các phần tử */
+  background-color: inherit; /* Kế thừa màu nền từ navbar */
+  font-family: inherit; /* Kế thừa font chữ từ navbar */
+  margin: 0; /* Xóa margin */
+}
+
+.dropdown-content {
+  display: none; /* Mặc định ẩn nội dung dropdown */
+  position: absolute; /* Vị trí tuyệt đối */
+  background-color: #f9f9f9; /* Màu nền của dropdown */
+  min-width: 160px; /* Độ rộng tối thiểu */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Hiển thị shadow */
+  z-index: 1; /* Sắp xếp z-index cao nhất */
+}
+
+.dropdown-content a {
+  float: none; /* Không căn trái các phần tử */
+  color: black; /* Màu chữ */
+  padding: 12px 16px; /* Khoảng cách giữa các phần tử */
+  text-decoration: none; /* Xóa gạch chân dưới */
+  display: block; /* Hiển thị dạng block */
+  text-align: left; /* Căn trái nội dung */
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd; /* Màu nền khi di chuột qua */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Hiển thị nội dung dropdown khi di chuột vào */
+}
+
+
+
 .header {
 	   background-color: ecece7;
 	    color: inherit;
@@ -41,6 +112,9 @@
 	    color: white;
 	    font-weight: bold
 	  }
+.header search-form {
+    min-width: 250px
+}
 
 .footer {
   display: flex;
