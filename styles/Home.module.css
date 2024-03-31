@@ -1,11 +1,9 @@
 .container {
-  display: block;
   padding: 0 2rem;
 }
-
 .main {
   min-height: 100vh;
-  padding: 1rem 0;
+  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -17,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 800px;
+  max-width: 70%;
   margin: 0 auto; /* Canh chỉnh mainbv giữa trang */
   padding: 1rem; /* Padding giữa nội dung và mép của mainbv */
 }
@@ -62,7 +60,7 @@
     min-width: 250px;
 }
 
-@media (min-width: 576px) {
+
     .my-lg-0 {
         margin-bottom: 0!important;
         margin-top: 0!important;
@@ -71,7 +69,7 @@
         margin-bottom: .5rem!important;
         margin-top: .5rem!important;
     }
-}
+
 
 .footer {
   display: flex;
