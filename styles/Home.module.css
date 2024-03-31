@@ -13,20 +13,34 @@
 }
 
 .header {
-  display: flex;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea;
-  justify-content: flex-start;
-  align-items: center;
-}
+	    background-color: ecece7;
+	    color: inherit;
+	    padding: 10px;
+	    text-align: center;
+	  }
 
-.header a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
+	  /* Định dạng thanh điều hướng trên cùng */
+	  .topnav {
+	    overflow: hidden;
+	    background-color: #58257b;
+	  }
+
+	  /* Định dạng link điều hướng */
+	  .topnav a {
+	    float: left;
+	    display: block;
+	    color: #f2f2f2;
+	    text-align: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	  }
+
+	  /* Thay đổi màu liên kết khi di chuột qua */
+	  .topnav a:hover {
+	    background-color: #db7093;
+	    color: white;
+	    font-weight: bold
+	  }
 
 .footer {
   display: flex;
@@ -206,9 +220,9 @@
 }
 
 .pagination_rounded ul li a:hover {
-    background: #4285f4;
-    color: #fff;
-    border: 1px solid #4285f4;
+    background: 4285f4;
+    color: fff;
+    border: 1px solid 4285f4;
 }
 
 a.link {
