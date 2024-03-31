@@ -111,8 +111,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
             </Head>
 
             <div className={styles.container}>
-                <main className={styles.main}>
-
                 <Head>
                     <title>Blog</title>
                     <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
@@ -130,7 +128,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                         </div>
                     </form>
                 </div>
-
+                <main className={styles.main}>
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
