@@ -59,17 +59,18 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
 
 <header className={styles.header}>
-      <a href="/"><h2>HOME</h2></a>
-      <div className={styles.topnav}>
-        <a href="#">Animal</a> 
-        <form className={styles.search-form my-2 my-lg-0} role="search" method="get" action="">
-          <div className={styles.input-group}>
-            <input type="text" name="s" className={styles.form-control} placeholder="Search" title="Search" />
-            <button type="submit" name="submit" className={styles.btn btn-outline-secondary}>Search</button>
-          </div>
-        </form>
+  <a href="/"><h2>HOME</h2></a>
+  <div className={styles.topnav}>
+    <a href="#">Animal</a> 
+    <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
+      <div className={styles["input-group"]}>
+        <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
+        <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
       </div>
-    </header>
+    </form>
+  </div>
+</header>
+
 
       <main className={styles.main}> 
   <div className={styles.postGrid}>
