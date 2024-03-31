@@ -32,17 +32,18 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ posts, currentPage, totalPages }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.postContainer}>
       <Head>
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
 
+
       <header className={styles.header}>
-        <a href="/"><h2>HOME</h2></a>
+        <a href="/"><h2>Blog New</h2></a>
       </header>
       <div className={styles.topnav}>
-        <a href="#">Animal</a>
+        <a href="/">Home</a>
         <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
           <div className={styles["input-group"]}>
             <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
@@ -143,7 +144,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     link: `${baseUrl}/${post.uri}`,
   }));
 
-  const postsPerPage = 12;
+  const postsPerPage = 15;
   const totalPages = Math.ceil(posts.length / postsPerPage);
   const currentPage = 1;
 
