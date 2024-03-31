@@ -4,6 +4,7 @@
 }
 
 .main {
+  max-width: 850px;
   min-height: 100vh;
   padding: 1rem 0;
   flex: 1;
@@ -11,6 +12,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.img{
+  display:block;
+  margin:0 auto;
 }
 
 
@@ -46,7 +51,7 @@
     min-width: 250px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 576px) {
     .my-lg-0 {
         margin-bottom: 0!important;
         margin-top: 0!important;
