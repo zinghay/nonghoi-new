@@ -99,7 +99,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
     const ogType = 'article';
 
     return (
-        <>
                 <div className={styles.container}>
       <Head>
         <title>Blog</title>
@@ -154,7 +153,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
             </footer>
                           </div>
 
-        </>
     );
 };
 
