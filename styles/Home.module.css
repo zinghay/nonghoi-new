@@ -14,7 +14,7 @@
 
 .header {
 	    background-color: ecece7;
-	    color: inherit;
+	    color: eaeaea;
 	    padding: 10px;
 	    text-align: center;
 	  }
@@ -22,14 +22,14 @@
 	  /* Định dạng thanh điều hướng trên cùng */
 	  .topnav {
 	    overflow: hidden;
-	    background-color: #58257b;
+	    background-color: 4285f4;
 	  }
 
 	  /* Định dạng link điều hướng */
 	  .topnav a {
 	    float: left;
 	    display: block;
-	    color: #f2f2f2;
+	    color: eaeaea;
 	    text-align: center;
 	    padding: 14px 16px;
 	    text-decoration: none;
@@ -37,7 +37,7 @@
 
 	  /* Thay đổi màu liên kết khi di chuột qua */
 	  .topnav a:hover {
-	    background-color: #db7093;
+	    background-color: 4285f4;
 	    color: white;
 	    font-weight: bold
 	  }
@@ -46,7 +46,7 @@
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid eaeaea;
   justify-content: center;
   align-items: center;
 }
