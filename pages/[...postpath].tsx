@@ -110,7 +110,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:height" content="600" />
             </Head>
 
-            <div className={styles.container}>
+            <div className={styles.containerbv}>
                 <Head>
                     <title>Blog</title>
                     <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
