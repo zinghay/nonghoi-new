@@ -102,8 +102,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <>
             <Head>
                 <meta property="og:title" content="" />
-                <meta property="og:description" content="ㅤ
-" />
+                <meta property="og:description" content="ㅤ" />
                 <meta property="og:image" content={ogImage} />
                 <meta property="og:url" content={ogImage} />
                 <meta property="og:type" content={ogType} />
@@ -111,61 +110,56 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:height" content="600" />
             </Head>
 
+            <div className={styles.container}>
+                <Head>
+                    <title>Blog</title>
+                    <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
+                </Head>
 
-    <div className={styles.container}>
-      <Head>
-        <title>Blog</title>
-        <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
-      </Head>
+                <header className={styles.header}>
+                    <a href="/"><h2>HOME</h2></a>
+                </header>
+                <div className={styles.topnav}>
+                    <a href="#">Animal</a>
+                    <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
+                        <div className={styles["input-group"]}>
+                            <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
+                            <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
+                        </div>
+                    </form>
+                </div>
 
-      <header className={styles.header}>
-        <a href="/"><h2>HOME</h2></a>
-      </header>
-      <div className={styles.topnav}>
-        <a href="#">Animal</a>
-        <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
-          <div className={styles["input-group"]}>
-            <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
-            <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
-          </div>
-        </form>
-      
                 <h1>{post.title}</h1>
-                <img
-                    src={post.featuredImage.node.sourceUrl}
-                    alt={post.featuredImage.node.altText || post.title}
-                />
+                <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
 
-
-
-      <main className={styles.main}>
-        <h2>Related Posts</h2>
-  <div className={styles.postGrid}>
-        {post.categories?.nodes.map((category: any) => (
-            category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
-                <div key={relatedPost.id} className={styles.postCard}>
-                    <Link href={relatedPost.link}>
-                        <a>
-                            <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.postImage} />
-                            <p className={styles.postTitle}>{relatedPost.title}</p>
-                        </a>
-                    </Link>
-                </div>
-            ))
-        ))}
-    </div>
-      </main>
+                <main className={styles.main}>
+                    <h2>Related Posts</h2>
+                    <div className={styles.postGrid}>
+                        {post.categories?.nodes.map((category: any) => (
+                            category.posts?.nodes.slice(0, 6).map((relatedPost: any) => (
+                                <div key={relatedPost.id} className={styles.postCard}>
+                                    <Link href={relatedPost.link}>
+                                        <a>
+                                            <img src={relatedPost.featuredImage?.node.sourceUrl} alt={relatedPost.title} className={styles.postImage} />
+                                            <p className={styles.postTitle}>{relatedPost.title}</p>
+                                        </a>
+                                    </Link>
+                                </div>
+                            ))
+                        ))}
+                    </div>
+                </main>
+            </div>
 
             <footer className={styles.footer}>
                 <a href="/" rel="noopener noreferrer" >
                     Powered by Park Ji Sung
                 </a>
             </footer>
- </div>
-
         </>
     );
 };
+
 
 export default Post;
