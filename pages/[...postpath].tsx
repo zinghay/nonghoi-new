@@ -109,10 +109,11 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
             </Head>
-            <div className={styles.container}>
                 <header className={styles.header}>
                     <a href="/"><h2>HOME</h2></a>
                 </header>
+<div className={styles.container}>
+
                 <div className={styles.topnav}>
                     <a href="#">Animal</a>
                     <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
@@ -126,6 +127,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
+</div>
+
                     <h2>Related Posts</h2>
                     <div className={styles.postGrid}>
                         {post.categories?.nodes.map((category: any) => (
@@ -147,7 +150,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                     Powered by Park Ji Sung
                 </a>
             </footer>
-                            </div>
 
         </>
     );
