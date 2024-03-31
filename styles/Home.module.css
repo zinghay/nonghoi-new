@@ -13,17 +13,20 @@
   align-items: center;
 }
 .mainbv {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 800px;
-  padding: 1rem 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto; /* Canh chỉnh mainbv giữa trang */
+  padding: 1rem; /* Padding giữa nội dung và mép của mainbv */
 }
-.img{
-  display:block;
-  margin:0 auto;
+
+.img {
+  max-width: 100%; /* Hình ảnh tự động thu nhỏ khi vượt quá kích thước của mainbv */
+  height: auto; /* Đảm bảo tỷ lệ khung hình không bị méo */
+  display: block;
+  margin: 0 auto; /* Canh chỉnh hình ảnh giữa mainbv */
 }
 
 
