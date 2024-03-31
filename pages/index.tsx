@@ -57,14 +57,12 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
 
-
-      
  <header className={styles.header}>
-   <a href="/">HOME</a>
+   <a href="/"><h2>HOME</h2></a>
  </header>
+      <div className={styles.topnav}><a href="#">Animal</a> </div>
       
-      <main className={styles.main}>
-        
+      <main className={styles.main}> 
   <div className={styles.postGrid}>
           {posts.map((post) => (
             <div key={post.id} className={styles.postCard}>
