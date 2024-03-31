@@ -51,26 +51,26 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Blog</title>
-        <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
-      </Head>
+   <div className={styles.container}>
+    <Head>
+      <title>Blog</title>
+      <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
+    </Head>
 
-
-<header className={styles.header}>
-  <a href="/"><h2>HOME</h2></a>
-  </header>
-  <div className={styles.topnav}>
-    <a href="#">Animal</a> 
-    <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
-      <div className={styles["input-group"]}>
-        <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
-        <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
-      </div>
-    </form>
+    <header className={styles.header}>
+      <a href="/"><h2>HOME</h2></a>
+    </header>
+    <div className={styles.topnav}>
+      <a href="#">Animal</a> 
+      <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
+        <div className={styles["input-group"]}>
+          <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
+          <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
+        </div>
+      </form>
+    </div>
   </div>
-</header>
+
 
 
       <main className={styles.main}> 
