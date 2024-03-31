@@ -99,7 +99,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     const ogType = 'article';
 
     return (
-        <div>
+               <div className={styles.postContainer}>
       <Head>
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
@@ -125,11 +125,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
           </div>
         </form>
       </div>
-                                <div className={styles.postContainer}>
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
-                </div>
                                             <h2>Related Posts</h2>
 
                     <div className={styles.postGrid}>
