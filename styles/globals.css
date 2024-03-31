@@ -38,9 +38,11 @@ a {
 }
 
 .post-container img {
-  width: 100%;
-  padding: 10px 0;
-  height: unset;
+  max-width: 100%; /* Hình ảnh tự động thu nhỏ khi vượt quá kích thước của mainbv */
+  height: auto; /* Đảm bảo tỷ lệ khung hình không bị méo */
+  display: block;
+  margin: 0 auto; /* Canh chỉnh hình ảnh giữa mainbv */
+
 }
 
 .post-container p {
