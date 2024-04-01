@@ -112,18 +112,36 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
       </Head>
-      <header className={styles.header}>
-        <a href="/"><h2>Blog New</h2></a>
-      </header>
-      <div className={styles.topnav}>
-        <a href="/">Home</a>
-        <form className={`${styles["search-form"]} my-2 my-lg-0`} role="search" method="get" action="">
-          <div className={styles["input-group"]}>
-            <input type="text" name="s" className={styles["form-control"]} placeholder="Search" title="Search" />
-            <button type="submit" name="submit" className={`${styles.btn} ${styles["btn-outline-secondary"]}`}>Search</button>
-          </div>
-        </form>
+    
+                 <header className={styles.navbar}>
+  <div className={styles.container}>
+    <a href="/" className={styles.logo}>HOME</a>
+    <nav className={styles['nav-links']}>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div className={styles['search-toggle']}>
+      <input type="checkbox" id={styles['search-toggle-checkbox']} />
+      <label htmlFor={styles['search-toggle-checkbox']}>&#128269;</label>
+      <div className={styles['search-box']}>
+        <input type="text" placeholder="Search" />
+        <button>Search</button>
       </div>
+    </div>
+    <label htmlFor={styles['nav-toggle']} className={styles['nav-toggle-label']}>&#9776;</label>
+    <div className={styles['nav-links-mobile']}>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+                   
                 <h1>{post.title}</h1>
                 <img src={post.featuredImage.node.sourceUrl} alt={post.featuredImage.node.altText || post.title} />
                 <article dangerouslySetInnerHTML={{ __html: post.content }} />
