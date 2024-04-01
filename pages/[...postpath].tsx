@@ -111,6 +111,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:type" content={ogType} />
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
+          		<title>{post.title}</title>
       </Head>
     
                  <header className={styles.navbar}>
