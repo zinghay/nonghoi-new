@@ -101,7 +101,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
     return (
                <div className={styles.postContainer}>
       <Head>
-        <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta property="og:title" content="ogTitle" />
