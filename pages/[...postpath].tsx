@@ -123,13 +123,15 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
-    <div className={styles['search-toggle']}>
+       <div className={styles['search-toggle']}>
+      <input type="checkbox" id={styles['search-toggle-checkbox']} />
       <label htmlFor={styles['search-toggle-checkbox']}>&#128269;</label>
       <div className={styles['search-box']}>
-<input type="text" size={30} placeholder="Search" />
+        <input type="text" placeholder="Search" />
         <button>Search</button>
       </div>
     </div>
+
     <label htmlFor={styles['nav-toggle']} className={styles['nav-toggle-label']}>&#9776;</label>
     <div className={styles['nav-links-mobile']}>
       <ul>
