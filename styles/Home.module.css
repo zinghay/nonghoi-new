@@ -2,11 +2,6 @@
 @media only screen and (max-width: 600px) {
   /* Thực hiện các thay đổi CSS ở đây */
 
-  .container {
-    width: 90%;
-    margin: 0 auto;
-  }
-
   /* Ẩn một phần tử nào đó */
   .hidden-on-mobile {
     display: none;
@@ -38,39 +33,7 @@
 }
 
 /* Định dạng thanh điều hướng trên cùng */
-.topnav {
-    overflow: hidden;
-    background-color: #4285f4;
-}
 
-/* Định dạng link điều hướng */
-.topnav a {
-    float: left;
-    display: block;
-    color: white; /* Thay đổi màu chữ thành màu trắng */
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Thay đổi màu liên kết khi di chuột qua */
-.topnav a:hover {
-    background-color: #eaeaea;
-    font-weight: bold; /* Loại bỏ dòng color và giữ nguyên màu chữ */
-}
-
-.form {
-    min-width: 250px;
-}
-
-    .my-lg-0 {
-        margin-bottom: 0!important;
-        margin-top: 0!important;
-    }
-    .my-2 {
-        margin-bottom: .5rem!important;
-        margin-top: .5rem!important;
-    }
 
 
 .footer {
@@ -313,4 +276,98 @@ a.link {
 
 .postContainer .heateor_sss_sharing_container {
   display: none;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #4285f4;
+  color: #fff;
+  padding: 15px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.nav-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links ul li {
+  margin-right: 20px;
+}
+
+.nav-links ul li:last-child {
+  margin-right: 0;
+}
+
+.nav-links ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.search-toggle {
+  position: relative;
+}
+
+.search-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.search-toggle label {
+  cursor: pointer;
+}
+
+.search-box {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#search-toggle-checkbox:checked ~ .search-box {
+  display: block;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle-label {
+    display: block;
+  }
+
+  #nav-toggle:checked ~ .nav-links-mobile {
+    display: block;
+  }
 }
