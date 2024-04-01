@@ -104,7 +104,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta property="og:title" content="" />
+                <meta property="og:title" content="ogTitle" />
                 <meta property="og:description" content="ㅤ" />
                 <meta property="og:image" content={ogImage} />
                 <meta property="og:url" content={ogImage} />
