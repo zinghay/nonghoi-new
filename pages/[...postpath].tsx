@@ -126,7 +126,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     <div className={styles['search-toggle']}>
       <label htmlFor={styles['search-toggle-checkbox']}>&#128269;</label>
       <div className={styles['search-box']}>
-        <input type="text" size="30%" placeholder="Search" />
+<input type="text" size={30} placeholder="Search" />
         <button>Search</button>
       </div>
     </div>
