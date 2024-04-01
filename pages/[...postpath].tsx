@@ -101,8 +101,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
     return (
                <div className={styles.postContainer}>
       <Head>
-        <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
-           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <title>{post.title}</title>
+                <link rel="canonical" href={`https://${host}/${path}`} />
+                <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta property="og:title" content={ogTitle} />
                 <meta property="og:description" content="ㅤ" />
                 <meta property="og:image" content={ogImage} />
@@ -110,7 +112,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
                 <meta property="og:type" content={ogType} />
                 <meta property="og:image:width" content="600" />
                 <meta property="og:image:height" content="600" />
-          		<title>{post.title}</title>
       </Head>
     
                  <header className={styles.navbar}>
@@ -124,10 +125,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
       </ul>
     </nav>
     <div className={styles['search-toggle']}>
-      <input type="checkbox" id={styles['search-toggle-checkbox']} />
       <label htmlFor={styles['search-toggle-checkbox']}>&#128269;</label>
       <div className={styles['search-box']}>
-        <input type="text" placeholder="Search" />
+        <input type="text" size="30%" placeholder="Search" />
         <button>Search</button>
       </div>
     </div>
