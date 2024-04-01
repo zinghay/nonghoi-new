@@ -32,7 +32,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ posts, currentPage, totalPages }) => {
   return (
-    <div className={styles.postContainer}>
+    <div>
      
       <Head>
         <title>Blog</title>
@@ -161,7 +161,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     link: `${baseUrl}/${post.uri}`,
   }));
 
-  const postsPerPage = 15;
+  const postsPerPage = 16;
   const totalPages = Math.ceil(posts.length / postsPerPage);
   const currentPage = 1;
 
