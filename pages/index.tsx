@@ -34,7 +34,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ posts, currentPage, totalPages, hasNextPage, hasPreviousPage }) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
@@ -105,44 +105,44 @@ const Home: NextPage<HomeProps> = ({ posts, currentPage, totalPages, hasNextPage
               </li>
             )}
 
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li key={index}>
-                <Link href={`/?page=${index + 1}`}>
-                  <a className={currentPage === index + 1 ? styles.activePage : undefined}>{index + 1}</
-</a>
-              </Link>
-            </li>
-          ))}
+{Array.from({ length: totalPages }, (_, index) => (
+  <li key={index}>
+    <Link href={`/?page=${index + 1}`}>
+      <a className={currentPage === index + 1 ? styles.activePage : undefined}>{index + 1}</a>
+    </Link>
+  </li>
+))}
 
-          {hasNextPage && (
-            <li>
-              <Link href={`/?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`}>
-                <a className="next">
-                  Trang sau <i className="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
-              </Link>
-            </li>
-          )}
-        </ul>
-      </div>
+{hasNextPage && (
+  <li>
+    <Link href={`/?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`}>
+      <a className="next">
+        Trang sau <i className="fa fa-angle-right" aria-hidden="true"></i>
+      </a>
+    </Link>
+  </li>
+)}
+</ul>
+</div>
+</main>
 
-      <footer className={styles.footer}>
-        <a href="/" rel="noopener noreferrer" >
-          Powered by Park Ji Sung
-        </a>
-      </footer>
-    </div>
-  );
+<footer className={styles.footer}>
+<a href="/" rel="noopener noreferrer">Powered by Park Ji Sung</a>
+</footer>
+</>
+);
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const endpoint = process.env.GRAPHQL_ENDPOINT as string;
-  const graphQLClient = new GraphQLClient(endpoint);
-  const baseUrl = `https://${req.headers.host}`;
+const endpoint = process.env.GRAPHQL_ENDPOINT as string;
+const graphQLClient = new GraphQLClient(endpoint);
+const baseUrl = `https://${req.headers.host}`;
 
-  const page = parseInt(query.page as string) || 1;
-  const postsPerPage = 16;
+const page = parseInt(query.page as string) || 1;
+const postsPerPage = 16;
 
+// Xử lý lỗi tiềm ẩn khi lấy dữ liệu
+try {
   const query = gql`
     {
       posts(first: ${postsPerPage}, where: { orderby: { field: MODIFIED, order: DESC }}) {
@@ -184,9 +184,22 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       currentPage: page,
       totalPages: Math.ceil(data.posts.nodes.length / postsPerPage),
       hasNextPage: data.posts.pageInfo.hasNextPage,
-      hasPreviousPage: data.posts.pageInfo.hasPreviousPage
-    }
+      hasPreviousPage: data.posts.pageInfo.hasPreviousPage,
+    },
   };
+} catch (error) {
+  console.error(error);
+  // Hiển thị thông báo lỗi cho người dùng
+  return {
+    props: {
+      posts: [],
+      currentPage: 1,
+      totalPages: 0,
+      hasNextPage: false,
+      hasPreviousPage: false,
+    },
+  };
+}
 };
 
 export default Home;
