@@ -12,7 +12,7 @@ interface Post {
     node: {
       sourceUrl: string;
       altText: string;
-    };
+    }
   };
   categories: {
     nodes: {
@@ -28,46 +28,46 @@ interface HomeProps {
   posts: Post[];
   currentPage: number;
   totalPages: number;
-  hasNextPage: boolean;
-  hasPreviousPage: boolean;
 }
 
-const Home: NextPage<HomeProps> = ({ posts, currentPage, totalPages, hasNextPage, hasPreviousPage }) => {
+const Home: NextPage<HomeProps> = ({ posts, currentPage, totalPages }) => {
   return (
-    <>
+    <div>
+     
       <Head>
         <title>Blog</title>
         <link rel="icon" href="https://actualidadradio.com/favicon.ico/ms-icon-310x310.png" />
       </Head>
 
-      <header className={styles.navbar}>
-        <div className={styles.container}>
-          <a href="/" className={styles.logo}>HOME</a>
-          <nav className={styles['nav-links']}>
-            <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </nav>
-          <div className={styles['search-toggle']}>
-            <input type="checkbox" id={styles['search-toggle-checkbox']} />
-            <label htmlFor={styles['search-toggle-checkbox']}>&#128269;</label>
-            <div className={styles['search-box']}>
-              <input type="text" placeholder="Search" />
-              <button>Search</button>
-            </div>
-          </div>
-          <label htmlFor={styles['nav-toggle']} className={styles['nav-toggle-label']}>&#9776;</label>
-          <div className={styles['nav-links-mobile']}>
-            <ul>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </header>
+
+       <header className={styles.navbar}>
+  <div className={styles.container}>
+    <a href="/" className={styles.logo}>HOME</a>
+    <nav className={styles['nav-links']}>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div className={styles['search-toggle']}>
+      <input type="checkbox" id={styles['search-toggle-checkbox']} />
+      <label htmlFor={styles['search-toggle-checkbox']}>&#128269;</label>
+      <div className={styles['search-box']}>
+        <input type="text" placeholder="Search" />
+        <button>Search</button>
+      </div>
+    </div>
+    <label htmlFor={styles['nav-toggle']} className={styles['nav-toggle-label']}>&#9776;</label>
+    <div className={styles['nav-links-mobile']}>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
 
       <main className={styles.main}>
         <div className={styles.postGrid}>
@@ -95,57 +95,44 @@ const Home: NextPage<HomeProps> = ({ posts, currentPage, totalPages, hasNextPage
 
         <div className={styles.pagination_rounded}>
           <ul>
-            {hasPreviousPage && (
-              <li>
-                <Link href={`/?page=${currentPage > 1 ? currentPage - 1 : 1}`}>
-                  <a className="prev">
-                    <i className="fa fa-angle-left" aria-hidden="true"></i> Trang trước
-                  </a>
+            <li>
+              <a href={`/?page=${currentPage > 1 ? currentPage - 1 : 1}`} className="prev">
+                <i className="fa fa-angle-left" aria-hidden="true"></i> Prev
+              </a>
+            </li>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <li key={index}>
+                <Link href={`/?page=${index + 1}`}>
+                  <a className={currentPage === index + 1 ? styles.activePage : undefined}>{index + 1}</a>
                 </Link>
               </li>
-            )}
+            ))}
+            <li>
+              <a href={`/?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`} className="next">
+                Next <i className="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </main>
 
-{Array.from({ length: totalPages }, (_, index) => (
-  <li key={index}>
-    <Link href={`/?page=${index + 1}`}>
-      <a className={currentPage === index + 1 ? styles.activePage : undefined}>{index + 1}</a>
-    </Link>
-  </li>
-))}
-
-{hasNextPage && (
-  <li>
-    <Link href={`/?page=${currentPage < totalPages ? currentPage + 1 : totalPages}`}>
-      <a className="next">
-        Trang sau <i className="fa fa-angle-right" aria-hidden="true"></i>
-      </a>
-    </Link>
-  </li>
-)}
-</ul>
-</div>
-</main>
-
-<footer className={styles.footer}>
-<a href="/" rel="noopener noreferrer">Powered by Park Ji Sung</a>
-</footer>
-</>
-);
+      <footer className={styles.footer}>
+        <a href="/" rel="noopener noreferrer" >
+          Powered by Park Ji Sung
+        </a>
+      </footer>
+    </div>
+  );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-const endpoint = process.env.GRAPHQL_ENDPOINT as string;
-const graphQLClient = new GraphQLClient(endpoint);
-const baseUrl = `https://${req.headers.host}`;
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const endpoint = process.env.GRAPHQL_ENDPOINT as string;
+  const graphQLClient = new GraphQLClient(endpoint);
+  const baseUrl = `https://${req.headers.host}`;
 
-const page = parseInt(query.page as string) || 1;
-const postsPerPage = 16;
-
-// Xử lý lỗi tiềm ẩn khi lấy dữ liệu
-try {
   const query = gql`
     {
-      posts(first: ${postsPerPage}, where: { orderby: { field: MODIFIED, order: DESC }}) {
+      posts(first: 20, where: { orderby: { field: MODIFIED, order: DESC } }) {
         nodes {
           id
           title
@@ -163,11 +150,6 @@ try {
           }
           modifiedGmt
           uri
-          link: ${baseUrl}/post/${post.uri}
-        }
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
         }
       }
     }
@@ -176,30 +158,20 @@ try {
   const data = await graphQLClient.request(query);
   const posts: Post[] = data.posts.nodes.map((post: any) => ({
     ...post,
+    link: `${baseUrl}/${post.uri}`,
   }));
+
+  const postsPerPage = 16;
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const currentPage = 1;
 
   return {
     props: {
-      posts,
-      currentPage: page,
-      totalPages: Math.ceil(data.posts.nodes.length / postsPerPage),
-      hasNextPage: data.posts.pageInfo.hasNextPage,
-      hasPreviousPage: data.posts.pageInfo.hasPreviousPage,
+      posts: posts.slice(0, postsPerPage),
+      currentPage,
+      totalPages,
     },
   };
-} catch (error) {
-  console.error(error);
-  // Hiển thị thông báo lỗi cho người dùng
-  return {
-    props: {
-      posts: [],
-      currentPage: 1,
-      totalPages: 0,
-      hasNextPage: false,
-      hasPreviousPage: false,
-    },
-  };
-}
 };
 
 export default Home;
